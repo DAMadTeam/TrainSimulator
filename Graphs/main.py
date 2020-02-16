@@ -1,5 +1,6 @@
 import pygame, sys
 from graph import Graph
+import functions as fn
 
 pygame.init()
 
@@ -23,6 +24,8 @@ coord2 = (0, 0)
 secondClick = False
 clickedVertex = None
 
+font = pygame.font.SysFont('arial', 20)
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
@@ -45,7 +48,7 @@ while True:
                         if (shape[0] - 10 <= pygame.mouse.get_pos()[0] <= shape[0] + 10
                         and shape[1] - 10 <= pygame.mouse.get_pos()[1] <= shape[1] + 10):
                             if clickedVertex != shapes.index(shape):
-                                graph.addEdge(clickedVertex, shapes.index(shape), 5)
+                                graph.addEdge(clickedVertex, shapes.index(shape), fn.calculateMagnitude(shapes[clickedVertex], shape))
                             secondClick = False
                             clickedVertex = None
 
@@ -62,6 +65,8 @@ while True:
 
     for i in graph.adjDict.items():
         for j in i[1]:
-            pygame.draw.line(screen, (255, j[1], j[1]), shapes[i[0]], shapes[j[0]], 5)
+            pygame.draw.line(screen, RED, shapes[i[0]], shapes[j[0]], 5)
+            text = font.render(str(j[1]), 1, WHITE)
+            screen.blit(text, fn.calculateMedianPoint(shapes[i[0]], shapes[j[0]]))
 
     pygame.display.update()
