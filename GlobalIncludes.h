@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Exception.h"
+#include <exception>
 
 #include "Positioning/Coordinates.hpp"
 #include "TracksMockup/TrackSeg.hpp"
