@@ -1,16 +1,19 @@
-#include "../Positioning/Coordinates.hpp"
+#include "../GlobalIncludes.h"
+
 #include "Node.hpp"
+#include "TrackShape.h"
 
 class TrackSeg
 {
 private:
-    double length;
+    TrackShape *shape;
     Node *fwd, *bck;
-    char fwd_id, bck_id;
+    char fwd_id, bck_idl;
 
 public:
-    virtual void GetCartPos(double&, Coordinates&, TrackSeg*&, bool&) = 0;              //gives coordinates of cart based on offset and tells it
-                                                                                //the segment it is now on, if it has passed the current one
-};
+    TrackSeg() = delete;
+    TrackSeg(TrackShape*);
+    ~TrackSeg() = default;                                      //изменить
 
-#include "TrackStraight.hpp"
+    void ShiftCart(double&, Coordinates&, TrackSeg*&, bool&);
+};
