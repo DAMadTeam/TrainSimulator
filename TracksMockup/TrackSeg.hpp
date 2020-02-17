@@ -2,6 +2,7 @@
 
 #include "../GlobalIncludes.h"
 
+#include "TrackExceptions.h"
 #include "Node.hpp"
 #include "TrackShape.h"
 
@@ -22,3 +23,8 @@ public:
     void readParamsAsLinear(Coordinates&, Coordinates&);
     void readParamsAsCircular(Coordinates&, double&, double&, double&);
 };
+
+void TrackSeg::ShiftCart(TrackSeg *&next_seg, bool &direction)
+{
+    
+}
