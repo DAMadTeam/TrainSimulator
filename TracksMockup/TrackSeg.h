@@ -17,5 +17,6 @@ public:
     TrackSeg(TrackShape*);
     ~TrackSeg() = default;                                      //изменить
 
-    void ShiftCart(double&, Coordinates&, TrackSeg*&, bool&);
+    void ShiftCart(TrackSeg*&, bool&);
+    
 };
