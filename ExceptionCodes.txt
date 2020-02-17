@@ -1,0 +1,2 @@
+0: RR_DeadEnd_Overrun
+1: RR_Switch_Bad_Track
