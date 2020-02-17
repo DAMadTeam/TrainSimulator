@@ -18,5 +18,4 @@ public:
     ~TrackSeg() = default;                                      //изменить
 
     void ShiftCart(TrackSeg*&, bool&);
-    
 };
