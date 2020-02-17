@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../GlobalIncludes.h"
 
 #include "Node.hpp"
