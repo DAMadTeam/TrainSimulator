@@ -1,3 +1,6 @@
+#ifndef TRAIN_HPP
+#define TRAIN_HPP
+
 #include "../Positioning/Coordinates.hpp"
 #include "TrainCar.hpp"
 
@@ -22,6 +25,8 @@ public:
 	void addCar(TrainCar* ) return;
 	void removeCar(int id) return;
 
-	void replaceTrain() return;
+	void replaceTrain() return; //Вычисляется новая координата локомотива поезда. Все координаты вагонов передаются дальше по списку (+ поправки для полуокружностей)
 
 }
+
+#endif
