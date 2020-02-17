@@ -1,9 +1,4 @@
-class Coordinates               //placeholder
-{
-public:
-    double x, y, z;
-};
-
+#include "../Positioning/Coordinates.hpp"
 #include "Node.hpp"
 
 class TrackSeg
