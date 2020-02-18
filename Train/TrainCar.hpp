@@ -4,34 +4,49 @@
 #include "../Positioning/Coordinates.hpp"
 #include "../TracksMockup/TrackSeg.h"
 
+class Truck{
+private:
+	Coordinates* coordinates;
+	TrackSeg* track;
+
+public:
+	Coordinates* getCoordinates() return this->coordinates;
+	TrackSeg* getTrack() return this->track; 
+}
+
 class TrainCar{
 private:
 	bool locomotive;
 	TrainCar* next = nullptr; //Типа сцепка
 	TrainCar* previous = nullptr; 
-	Coordinates firstTruckCoordinates; //Координаты центра передних катков
-	Coordinates lastTruckCoordinates;
-	TrackSeg* track;
-	int len; //Длина вагона со сцепкой
-	int truckOffset; //Отступ от сцепки до телеги
+	Truck* firstTruck; //Передняя телега
+	Truck* lastTruck; //Задняя телега
+	double len; //Длина вагона со сцепкой
+	double truckOffset; //Отступ от сцепки до телеги
 	double mass;
 
 public:
-	TrainCar(bool isLocomotive, TrackSeg* track, Coordinates firstTruckCoordinates, Coordinates lastTruckCoordinates, double mass){ //Вагон с координатами, остаётся только прицепить
+	TrainCar(bool isLocomotive, Truck firstTruck, Truck lastTruck, double mass){ //Вагон с координатами, остаётся только прицепить (Нужно ещё думать по поводу спавна вагонов)
 		this->locomotive = isLocomotive;
-		this->track = track;
-		this->firstTruckCoordinates = firstTruckCoordinates;
-		this->lastTruckCoordinates = lastTruckCoordinates;
+		this->firstTruck->setCoordinates(firstTruckCoordinates);
+		this->lastTruck->setCoordinates(lastTruckCoordinates);
+		this->mass = mass;
 	}
 
 	bool isLocomotive(){
 		return locomotive;
 	}
 
+	void getTrucks(Truck* firstTruck, Truck* lastTruck){
+		firstTruck = this->firstTruck;
+		lastTruck = this->lastTruck;
+	}
+
 	void setNext(TrainCar* pointer) return; //Цепляем вагоны
 	void setPrevious(TrainCar* pointer) return; //
 	void setMass(int mass) this->mass = mass;
-	int getMass() return this->mass;
+	double getMass() return this->mass;
+	double getLen() return this->len;
 
 
 }
