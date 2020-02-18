@@ -3,7 +3,6 @@
 
 #include "../Positioning/Coordinates.hpp"
 #include "../TracksMockup/TrackSeg.h"
-#include "TrainMath.hpp"
 
 class TrainCar{
 private:
@@ -15,18 +14,14 @@ private:
 	TrackSeg* track;
 	int len; //Длина вагона со сцепкой
 	int truckOffset; //Отступ от сцепки до телеги
+	double mass;
 
 public:
-	TrainCar(bool isLocomotive, TrackSeg* track, Coordinates firstTruckCoordinates, Coordinates lastTruckCoordinates){ //Вагон с координатами, остаётся только прицепить
+	TrainCar(bool isLocomotive, TrackSeg* track, Coordinates firstTruckCoordinates, Coordinates lastTruckCoordinates, double mass){ //Вагон с координатами, остаётся только прицепить
 		this->locomotive = isLocomotive;
 		this->track = track;
 		this->firstTruckCoordinates = firstTruckCoordinates;
 		this->lastTruckCoordinates = lastTruckCoordinates;
-	}
-
-	TrainCar(bool isLocomotive, TrackSeg* track){ //Просто вагон без координат(вдруг понадобится)
-		this->locomotive = isLocomotive;
-		this->track = track;
 	}
 
 	bool isLocomotive(){
@@ -35,7 +30,8 @@ public:
 
 	void setNext(TrainCar* pointer) return; //Цепляем вагоны
 	void setPrevious(TrainCar* pointer) return; //
-
+	void setMass(int mass) this->mass = mass;
+	int getMass() return this->mass;
 
 
 }

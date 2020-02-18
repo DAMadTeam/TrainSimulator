@@ -7,7 +7,8 @@
 class Train{
 private:
     TrainCar* first;
-    TrainCar* last;    
+    TrainCar* last;
+    double mass;    
 
 public:
 	Train(int len){
