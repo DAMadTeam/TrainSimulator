@@ -32,6 +32,29 @@ void Node::shiftCart(TrackSeg *&new_seg, char source_seg_id)
 {
     if((state >> 6) == 0)                                       //тупик
     {
-        throw RR_DeadEnd_OverRun();
+        throw RRT_DeadEnd_OverRun();
     }
+    else if((state >> 6) == 1)                                  //сквозной узел
+    {
+        char i = 0;
+        while(i != -1)
+        {
+            if(i == 4)
+            {
+                i = -1;
+                new_seg = 0;
+                throw RRT_Bad_TransferNode();
+            }
+            else if((i != source_seg_id) * (tracks[i]))
+            {
+                new_seg = tracks[i];
+                i = -1;
+            }
+            else
+            {
+                i++;
+            }
+        }
+    }
+    
 }
