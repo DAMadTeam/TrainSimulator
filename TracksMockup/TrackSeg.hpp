@@ -11,17 +11,17 @@ class TrackSeg
 private:
     TrackShape *shape;
     Node *fwd, *bck;
-    char fwd_id, bck_idl;
+    unsigned char fwd_id, bck_idl;
 
 public:
     TrackSeg() = delete;
     TrackSeg(TrackShape*);
-    ~TrackSeg() = default;                                      //��������
+    ~TrackSeg() = default;                                      //исправить
 
     void ShiftCart(TrackSeg*&, bool&);
     char tellType();
     void readParamsAsLinear(Coordinates&, Coordinates&);
-    void readParamsAsCircular(Coordinates&, double&, double&, double&);
+    void readParamsAsCircular(Coordinates&, double&, double&, double&);     //центр окр-ти, радиус, азимут 1 (bck), азимут 2 (fwd), ход против частовой от направления на восток
 };
 
 void TrackSeg::ShiftCart(TrackSeg *&next_seg, bool &direction)
