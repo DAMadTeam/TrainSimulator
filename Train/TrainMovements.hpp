@@ -17,7 +17,8 @@ double getDistanceToEnd(Coordinates point, TrackSeg track, bool direction){
 }
 
 void moveTruck(Truck* truck, double speed, bool direction){ //Здесь скорость - смещение за один тик. Один вызов функции - один тик
-    double DTE = getDistanceToEnd(*(truck->getCoordinates()), *(truck->getTrack()), direction);
+    Coordinates* truckCoordinates = truck->getCoordinates();
+	double DTE = getDistanceToEnd(*truckCoordinates, *(truck->getTrack()), direction);
 
     if (DTE > speed){ //Если за один тик не выезжаем с сегмента пути, то едем спокойно
         
@@ -26,8 +27,29 @@ void moveTruck(Truck* truck, double speed, bool direction){ //Здесь ско�
         	Coordinates* bck = new Coordinates;
         	truck->getTrack->readParamsAsLinear(fwd, bck);
 
-    	}else{ //Пока только отрезки и дуги, поэтому работаем как с дугой
+			if (!direction){
+				Coordinates* cash = new Coordinates;
+				cash = fwd;
+				fwd = bck;
+				bck = fwd;
+			}
 
+			Coordinates* gVector = new Coordinates; //Напр. вектор прямой
+			gVector.x = fwd->x - bck->x;
+			gVector.y = fwd->y - bck->y;
+			gVector.z = fwd->z - bck->z;
+
+			double t; //T для координаты на прямой
+
+			//Считаем Т
+			// ....
+			
+			truckCoordinates.x = bck.x + gVector.x*t;
+			truckCoordinates.y = bck.y + gVector.y*t;
+			truckCoordinates.z = bck.z + gVector.x*t;
+
+    	}else{ //Пока только отрезки и дуги, поэтому работаем как с дугой
+			
     	} 
 
     }else{ //Если за один тик переходим с одного сегмента на другой, то описываем логику
