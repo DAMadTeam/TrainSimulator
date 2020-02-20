@@ -1,7 +1,7 @@
-class RR_DeadEnd_Overrun : public std::exception
+class RRT_DeadEnd_OverRun : public std::exception
 {
     const char *what() const noexcept override
     {
-        return "A train has tried to pass over a track end";
+        return "000";
     }
 };

@@ -11,7 +11,7 @@ private:
 public:
     Node() = delete;
     Node(TrackSeg*);
-    ~Node() = default;                                  //изменить
+    ~Node() = default;                                  //РёР·РјРµРЅРёС‚СЊ
 
 
     int AddTrackSeg(TrackSeg*, bool);
@@ -19,7 +19,7 @@ public:
     void shiftCart(TrackSeg*&, char);
 };
 
-Node::Node(TrackSeg* track)                             //доделать
+Node::Node(TrackSeg* track)                             //РёР·РјРµРЅРёС‚СЊ
 {
     state = 0;
     tracks[0] = track;
@@ -30,8 +30,8 @@ Node::Node(TrackSeg* track)                             //доделать
 
 void Node::shiftCart(TrackSeg *&new_seg, char source_seg_id)
 {
-    if((state >> 6) == 0)                                       //тупик
+    if((state >> 6) == 0)                                       //С‚СѓРїРёРє
     {
-        
+        throw RR_DeadEnd_OverRun();
     }
 }
