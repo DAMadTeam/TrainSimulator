@@ -16,7 +16,7 @@ public:
 
     int AddTrackSeg(TrackSeg*, bool);
     void RemoveSeg(unsigned char);
-    void shiftCart(TrackSeg*&, char);
+    void shiftCart(TrackSeg*&, unsigned char);
 };
 
 Node::Node(TrackSeg* track)                             //изменить
@@ -28,9 +28,9 @@ Node::Node(TrackSeg* track)                             //изменить
     tracks[3] = 0;
 }
 
-void Node::shiftCart(TrackSeg *&new_seg, char source_seg_id)
+void Node::shiftCart(TrackSeg *&new_seg, bool &direction, unsigned char source_seg_id)
 {
-    if((state >> 6) == 0)                                       //тупик
+    if((state >> 6) == 0)                                       //тупик 00X-----
     {
         throw RRT_DeadEnd_OverRun();
     }
@@ -48,6 +48,7 @@ void Node::shiftCart(TrackSeg *&new_seg, char source_seg_id)
             else if((i != source_seg_id) * (tracks[i]))
             {
                 new_seg = tracks[i];
+                direction = state & 32;                         //32 = 00100000b
                 i = -1;
             }
             else
@@ -58,6 +59,6 @@ void Node::shiftCart(TrackSeg *&new_seg, char source_seg_id)
     }
     else if((state >> 6) == 2)                                  //стрелка
     {
-        
+
     }
 }
