@@ -57,4 +57,7 @@ void Node::shiftCart(TrackSeg *&new_seg, char source_seg_id)
         }
     }
     else if((state >> 6) == 2)                                  //стрелка
+    {
+        
+    }
 }
