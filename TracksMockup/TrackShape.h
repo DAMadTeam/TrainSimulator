@@ -15,10 +15,10 @@ private:
 public:
     TrackLinear() = delete;
     TrackLinear(Coordinates&, Coordinates&);
-    ~TrackLinear() = default;                               //изменить
+    ~TrackLinear() = default;                               //РёР·РјРµРЅРёС‚СЊ
 
     char tellType() override;
-    void readParams(Coordinates&, Coordinates&);            //заполняет переданные по ссылке координаты своими концами, это не виртуальный метод, нужно разыменовать до TrackLinear!
+    void readParams(Coordinates&, Coordinates&);            //РЅРµ РІРёСЂС‚СѓР°Р»СЊРЅС‹Р№ РјРµС‚РѕРґ - СЂР°Р·С‹РјРµРЅРѕРІС‹РІР°С‚СЊ РґРѕ TrackLinear!
 };
 
 class TrackCircular : public TrackShape
@@ -31,10 +31,10 @@ private:
 public:
     TrackCircular() = delete;
     TrackCircular(Coordinates&, double, double, double);
-    ~TrackCircular() = default;                             //изменить
+    ~TrackCircular() = default;                             //РёР·РјРµРЅРёС‚СЊ
 
     char tellType() override;
-    void readParams(Coordinates&, double, double, double);  //заполняет переданные по ссылке координаты своими концами, это не виртуальный метод, нужно разыменовать до TrackCircular!
+    void readParams(Coordinates&, double, double, double);  //РЅРµ РІРёСЂС‚СѓР°Р»СЊРЅС‹Р№ РјРµС‚РѕРґ - СЂР°Р·С‹РјРµРЅРѕРІС‹РІР°С‚СЊ РґРѕ TrackCircular!
 };
 
 #include "TrackShape.cpp"
