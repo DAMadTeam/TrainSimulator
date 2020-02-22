@@ -3,7 +3,7 @@
 #include "../GlobalIncludes.h"
 
 #include "TrackExceptions.h"
-#include "Node.hpp"
+#include "Node.h"
 #include "TrackShape.h"
 
 class TrackSeg
