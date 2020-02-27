@@ -26,7 +26,7 @@ class TrackCircular : public TrackShape
 private:
     Coordinates centre;
     double radius;
-    double az1, az2;
+    double az_back, az_forward;
 
 public:
     TrackCircular() = delete;
@@ -34,7 +34,7 @@ public:
     ~TrackCircular() = default;                             //изменить
 
     char tellType() override;
-    void readParams(Coordinates&, double, double, double);  //не виртуальный метод - разыменовывать до TrackCircular!
+    void readParams(Coordinates&, double&, double&, double&);  //не виртуальный метод - разыменовывать до TrackCircular!
 };
 
 #include "TrackShape.cpp"
